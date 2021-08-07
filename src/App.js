@@ -1,4 +1,4 @@
-import DeckStatusPage from "./pages/DeckStatusPage"
+import DeckStatusPage from "../src/components/pages/DeckStatusPage"
 
 const App = () => {
     return (
