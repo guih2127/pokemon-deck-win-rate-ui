@@ -1,6 +1,10 @@
+import DeckStatusPage from "./pages/DeckStatusPage"
+
 const App = () => {
     return (
-        <div>App!</div>
+        <div>
+            <DeckStatusPage />
+        </div>
     );
 };
 
