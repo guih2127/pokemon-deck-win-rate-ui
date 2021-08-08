@@ -27,7 +27,7 @@ const MatchListComponent = ({ deck }) => {
             })
     };
 
-    const renderedIcon = (match) => {
+    const renderIcon = (match) => {
         if (match.win) {
             return (
                 <i className="smile outline icon"></i>
@@ -39,22 +39,22 @@ const MatchListComponent = ({ deck }) => {
         );
     };
 
-    const renderedMatches = matches.map((match, index) => {
+    const renderMatches = matches.map((match, index) => {
         return (
             <div className="item" key={index}>
-                {renderedIcon(match)}
+                {renderIcon(match)}
                 <div className="content">
                     <a className="header" href="/">Match {index + 1}</a>
                     <div className="description">
                         <DeckNameSpan>
                             {deck.name}
                             &nbsp;&nbsp;
-                        </DeckNameSpan> 
-                            Versus
+                        </DeckNameSpan>
+                        Versus
                         <DeckNameSpan>
                             &nbsp;&nbsp;
                             {match.opponentDeck.name}
-                        </DeckNameSpan> 
+                        </DeckNameSpan>
                     </div>
                 </div>
             </div>
@@ -68,8 +68,11 @@ const MatchListComponent = ({ deck }) => {
                 Last Matches
             </h2>
             <div className="ui list">
-                {renderedMatches}
+                {renderMatches}
             </div>
+            <button class="ui secondary button">
+                Add Match
+            </button>
         </MatchListDiv>
     );
 };

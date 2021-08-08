@@ -1,5 +1,5 @@
 const SelectComponent = ({ options, label, selectedOption, setSelectedOption }) => {
-    const renderedSelectedOptions = options.map(option => {
+    const renderSelectOptions = options.map(option => {
         return (
             <option key={option.id} value={option.id}>
                 {option.name}
@@ -20,7 +20,7 @@ const SelectComponent = ({ options, label, selectedOption, setSelectedOption }) 
             className="ui selection dropdown" 
             onChange={e => onChange(e)}
         >
-            {renderedSelectedOptions}
+            {renderSelectOptions}
         </select>
     );
 };

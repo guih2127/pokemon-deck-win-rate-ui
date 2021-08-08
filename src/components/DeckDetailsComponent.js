@@ -3,7 +3,7 @@ import styled from "styled-components";
 import CardService from '../services/CardService';
 import DeckService from "../services/DeckService";
 import SelectComponent from "./formComponents/SelectComponent";
-import Loader from "./Loader";
+import Loader from "./LoaderComponent";
 
 const DeckDetailsDiv = styled.div`
 `
@@ -58,46 +58,51 @@ const DeckDetailsComponent = ({ currentDeck, decks, setCurrentDeck }) => {
     const renderDeckStatus = () => {
         return (
             <DeckStatusDiv>
-                <div className="ui card">
-                    <a className="image" href="/">
-                        <img
-                            src={currentDeckFirstCardDetails.images.large}
-                            alt={currentDeckFirstCardDetails.name}
-                        />
-                    </a>
-                    <div className="content">
-                        <a className="header" href="/">
-                            {currentDeckFirstCardDetails.name}
-                        </a>
-                    </div>
-                </div>
-
-                <div className="ui horizontal statistics">
-                    <div className="statistic">
-                        <div className="value">
-                            <i className="gamepad icon"></i>
-                            <TextIconSpan>{currentDeckStatus.matchesPlayed}</TextIconSpan>
-                        </div>
-                        <div className="label">
-                            Matches Played
+                <div className="ui two column grid">
+                    <div className="column">
+                        <div className="ui card">
+                            <a className="image" href="/">
+                                <img
+                                    src={currentDeckFirstCardDetails.images.large}
+                                    alt={currentDeckFirstCardDetails.name}
+                                />
+                            </a>
+                            <div className="content">
+                                <a className="header" href="/">
+                                    {currentDeckFirstCardDetails.name}
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <div className="statistic">
-                        <div className="value">
-                            <i className="smile outline icon"></i>
-                            <TextIconSpan>{currentDeckStatus.matchesWon}</TextIconSpan>
-                        </div>
-                        <div className="label">
-                            Matches Won
-                        </div>
-                    </div>
-                    <div className="statistic">
-                        <div className="value">
-                            <i className="frown icon"></i>
-                            <TextIconSpan>{currentDeckStatus.matchesLost}</TextIconSpan>
-                        </div>
-                        <div className="label">
-                            Matches Lost
+                    <div className="column">
+                        <div className="ui horizontal statistics">
+                            <div className="statistic">
+                                <div className="value">
+                                    <i className="gamepad icon"></i>
+                                    <TextIconSpan>{currentDeckStatus.matchesPlayed}</TextIconSpan>
+                                </div>
+                                <div className="label">
+                                    Matches Played
+                                </div>
+                            </div>
+                            <div className="statistic">
+                                <div className="value">
+                                    <i className="smile outline icon"></i>
+                                    <TextIconSpan>{currentDeckStatus.matchesWon}</TextIconSpan>
+                                </div>
+                                <div className="label">
+                                    Matches Won
+                                </div>
+                            </div>
+                            <div className="statistic">
+                                <div className="value">
+                                    <i className="frown icon"></i>
+                                    <TextIconSpan>{currentDeckStatus.matchesLost}</TextIconSpan>
+                                </div>
+                                <div className="label">
+                                    Matches Lost
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -118,7 +123,7 @@ const DeckDetailsComponent = ({ currentDeck, decks, setCurrentDeck }) => {
                 setSelectedOption={setCurrentDeck}
             />
 
-            {loadingStatus ? <Loader /> : renderDeckStatus() }
+            {loadingStatus ? <Loader /> : renderDeckStatus()}
         </DeckDetailsDiv>
     );
 }

@@ -1,9 +1,11 @@
-import DeckStatusPage from "../src/components/pages/DeckStatusPage"
+import Footer from "./components/FooterComponent";
+import DeckStatusPage from "./components/pages/DeckStatusPage"
 
 const App = () => {
     return (
         <div>
             <DeckStatusPage />
+            <Footer />
         </div>
     );
 };

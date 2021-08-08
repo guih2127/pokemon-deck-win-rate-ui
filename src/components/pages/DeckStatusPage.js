@@ -40,7 +40,9 @@ const DeckStatusPage = () => {
                         />
                     </div>
                     <div className="column">
-                        <DeckStatusComponent />
+                        <DeckStatusComponent
+                            currentDeck={currentDeck} 
+                        />
                     </div>
                     <div className="column">
                         <MatchListComponent deck={currentDeck} />
