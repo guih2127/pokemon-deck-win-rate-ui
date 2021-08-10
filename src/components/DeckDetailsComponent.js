@@ -13,7 +13,7 @@ const TextIconSpan = styled.span`
 `
 
 const DeckStatusDiv = styled.div`
-    margin-top: 15px;
+    margin-top: 30px
 `
 
 const DeckDetailsComponent = ({ currentDeck, decks, setCurrentDeck }) => {
@@ -111,20 +111,24 @@ const DeckDetailsComponent = ({ currentDeck, decks, setCurrentDeck }) => {
     }
 
     return (
-        <DeckDetailsDiv>
+        <div>
             <h2 className="ui center aligned icon header">
                 <i className="file alternate icon"></i>
                 Deck Details
             </h2>
-            <SelectComponent
-                options={decks}
-                selectedOption={currentDeck}
-                label="Decks"
-                setSelectedOption={setCurrentDeck}
-            />
+            <div className="ui raised very padded text container segment">
+                <DeckDetailsDiv>
+                    <SelectComponent
+                        options={decks}
+                        selectedOption={currentDeck}
+                        label="Decks"
+                        setSelectedOption={setCurrentDeck}
+                    />
 
-            {loadingStatus ? <Loader /> : renderDeckStatus()}
-        </DeckDetailsDiv>
+                    {loadingStatus ? <Loader /> : renderDeckStatus()}
+                </DeckDetailsDiv>
+            </div>
+        </div>
     );
 }
 

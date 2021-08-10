@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import deckService from "../../services/DeckService";
 
 const DeckStatusPageDiv = styled.div`
-    padding: 20px;
+    padding: 45px;
 `
 
 const DeckStatusPage = () => {
@@ -28,7 +28,7 @@ const DeckStatusPage = () => {
             })
     };
 
-    if (currentDeck) {
+    if (currentDeck && decks) {
         return (
             <DeckStatusPageDiv>
                 <div className="ui three column grid">
@@ -45,7 +45,10 @@ const DeckStatusPage = () => {
                         />
                     </div>
                     <div className="column">
-                        <MatchListComponent deck={currentDeck} />
+                        <MatchListComponent 
+                            currentDeck={currentDeck} 
+                            decks={decks} 
+                        />
                     </div>
                 </div>
             </DeckStatusPageDiv>

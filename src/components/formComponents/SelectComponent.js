@@ -1,4 +1,16 @@
-const SelectComponent = ({ options, label, selectedOption, setSelectedOption }) => {
+import styled from "styled-components";
+
+const SelectComponent = ({
+    options,
+    label,
+    selectedOption,
+    setSelectedOption
+}) => {
+
+    const SelectDiv = styled.div`
+        display: grid;
+    `
+
     const renderSelectOptions = options.map(option => {
         return (
             <option key={option.id} value={option.id}>
@@ -11,17 +23,23 @@ const SelectComponent = ({ options, label, selectedOption, setSelectedOption }) 
         let option = options.filter(option => {
             return option.id === parseInt(event.target.value);
         })[0];
-        
+
         setSelectedOption(option);
     }
 
     return (
-        <select 
-            className="ui selection dropdown" 
-            onChange={e => onChange(e)}
-        >
-            {renderSelectOptions}
-        </select>
+        <SelectDiv>
+            <h4>
+                {label}
+            </h4>
+            <select
+                className="ui selection dropdown"
+                onChange={e => onChange(e)}
+                defaultValue={selectedOption.id}
+            >
+                {renderSelectOptions}
+            </select>
+        </SelectDiv>
     );
 };
 

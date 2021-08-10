@@ -15,19 +15,32 @@ const FooterDiv = styled.div`
 const IconDiv = styled.div`
     font-size: 50px;
     padding: 30px;
-` 
+    cursor:pointer;
+`
+
+const IconA = styled.a`
+    color: white;
+
+    /* :hover {
+        color: orange;
+    } */
+`
 
 const Footer = () => {
     return (
         <FooterDiv>
             <IconDiv>
-                <i className="linkedin alternate icon"></i>
+                <IconA href="https://www.linkedin.com/" target="_blank">
+                    <i className="linkedin alternate icon"></i>
+                </IconA>
             </IconDiv>
             <IconDiv>
-                <i className="github alternate icon"></i>
+                <IconA href="https://www.github.com/in/guilherme-reis-araujo-4a774014a/" target="_blank">
+                    <i className="github alternate icon"></i>
+                </IconA>
             </IconDiv>
         </FooterDiv>
-        
+
     );
 };
 
