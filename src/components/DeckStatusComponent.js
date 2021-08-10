@@ -14,35 +14,11 @@ const DeckNameDiv = styled.span`
 const DeckStatusDiv = styled.div`
 `
 
-const DeckStatusComponent = ({ currentDeck }) => {
-    const [loadingStatus, setLoadingStatus] = useState(true);
-    const [currentDeckStatus, setCurrentDeckStatus] = useState(null);
-
-    useEffect(() => {
-        setLoadingStatus(true);
-        retrieveDeckStatusByDeckId(currentDeck.id);
-
-    }, [currentDeck]);
-
-    useEffect(() => {
-        if (currentDeckStatus) {
-            setLoadingStatus(false);
-        };
-    }, [currentDeckStatus])
-
-    const retrieveDeckStatusByDeckId = async () => {
-        await deckService.getDeckStatusByDeckId(currentDeck.id)
-            .then(response => {
-                setCurrentDeckStatus(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    };
+const DeckStatusComponent = ({ currentDeck, currentDeckStatus }) => {
 
     const renderDeckStatus = () => {
         return (
-            <div className="ui raised very padded text container segment">
+            <div className="ui raised very padded text container segment" style={{height: '75vh'}}>
                 <DeckStatusDiv>
                     <div className="ui horizontal statistics">
                         <div className="statistic">
@@ -103,7 +79,7 @@ const DeckStatusComponent = ({ currentDeck }) => {
                 Deck Status
             </h2>
 
-            {loadingStatus ? <LoaderComponent /> : renderDeckStatus()}
+            {renderDeckStatus()}
         </DeckNameDiv>
     );
 }

@@ -11,32 +11,11 @@ const DeckNameSpan = styled.span`
 `
 
 const ButtonInsertMatch = styled.div`
-    margin-top: 100%;
+
 `
 
-const MatchListComponent = ({ currentDeck, decks }) => {
-    const [matches, setMatches] = useState([]);
+const MatchListComponent = ({ currentDeck, decks, matches, setMatches }) => {
     const [showInsertMatchModal, setShowInsertMatchModal] = useState(false);
-
-    useEffect(() => {
-        retrieveMatchs();
-    }, [currentDeck]);
-
-    useEffect(() => {
-        if (showInsertMatchModal) {
-            document.body.style.overflow = 'hidden';
-        }
-    }, [showInsertMatchModal]);
-
-    const retrieveMatchs = async () => {
-        await matchService.getMatchsByDeckId(currentDeck.id)
-            .then(response => {
-                setMatches(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    };
 
     const renderIcon = (match) => {
         if (match.win) {
@@ -78,7 +57,7 @@ const MatchListComponent = ({ currentDeck, decks }) => {
                 <i className="gamepad icon"></i>
                 Last Matches
             </h2>
-            <div className="ui raised very padded text container segment">
+            <div className="ui raised very padded text container segment" style={{height: '75vh'}}>
                 <MatchListDiv>
                     <div className="ui list">
                         {renderMatches}

@@ -1,9 +1,5 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
-import CardService from '../services/CardService';
-import DeckService from "../services/DeckService";
 import SelectComponent from "./formComponents/SelectComponent";
-import Loader from "./LoaderComponent";
 
 const DeckDetailsDiv = styled.div`
 `
@@ -16,44 +12,7 @@ const DeckStatusDiv = styled.div`
     margin-top: 30px
 `
 
-const DeckDetailsComponent = ({ currentDeck, decks, setCurrentDeck }) => {
-    const [loadingStatus, setLoadingStatus] = useState(true);
-    const [currentDeckFirstCardDetails, setCurrentDeckFirstCardDetails] = useState(null);
-    const [currentDeckStatus, setCurrentDeckStatus] = useState(null);
-
-    useEffect(() => {
-        setLoadingStatus(true);
-
-        retrieveCardById(currentDeck.id);
-        retrieveDeckStatusByDeckId(currentDeck.id);
-
-    }, [currentDeck]);
-
-    useEffect(() => {
-        if (currentDeckStatus && currentDeckFirstCardDetails) {
-            setLoadingStatus(false);
-        };
-    }, [currentDeckStatus, currentDeckFirstCardDetails])
-
-    const retrieveCardById = async () => {
-        await CardService.getCardById(currentDeck.firstPokemonExternalId)
-            .then(response => {
-                setCurrentDeckFirstCardDetails(response.data.data[0]);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    };
-
-    const retrieveDeckStatusByDeckId = async () => {
-        await DeckService.getDeckStatusByDeckId(currentDeck.id)
-            .then(response => {
-                setCurrentDeckStatus(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    };
+const DeckDetailsComponent = ({ currentDeck, decks, setCurrentDeck, currentDeckFirstCardDetails, currentDeckStatus }) => {
 
     const renderDeckStatus = () => {
         return (
@@ -116,7 +75,7 @@ const DeckDetailsComponent = ({ currentDeck, decks, setCurrentDeck }) => {
                 <i className="file alternate icon"></i>
                 Deck Details
             </h2>
-            <div className="ui raised very padded text container segment">
+            <div className="ui raised very padded text container segment" style={{height: '75vh'}}>
                 <DeckDetailsDiv>
                     <SelectComponent
                         options={decks}
@@ -125,7 +84,7 @@ const DeckDetailsComponent = ({ currentDeck, decks, setCurrentDeck }) => {
                         setSelectedOption={setCurrentDeck}
                     />
 
-                    {loadingStatus ? <Loader /> : renderDeckStatus()}
+                    {renderDeckStatus()}
                 </DeckDetailsDiv>
             </div>
         </div>
