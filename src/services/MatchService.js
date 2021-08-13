@@ -6,11 +6,11 @@ const getMatchsByDeckId = async (deckId) => {
 
 const insertMatch = async (match) => {
     return await PokemonTcgWinRateAPI.post(`matches`, match);
-}
+};
 
 const matchService = {
     getMatchsByDeckId,
     insertMatch
-}
+};
 
 export default matchService;

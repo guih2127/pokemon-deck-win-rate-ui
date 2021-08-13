@@ -1,10 +1,11 @@
 import Footer from "./components/FooterComponent";
 import DeckStatusPage from "./components/pages/DeckStatusPage"
+import LoginPage from "./components/pages/LoginPage";
 
 const App = () => {
     return (
         <div>
-            <DeckStatusPage />
+            <LoginPage />
             <Footer />
         </div>
     );
