@@ -57,7 +57,7 @@ const MatchListComponent = ({ currentDeck, decks, matches, setMatches }) => {
                 <i className="gamepad icon"></i>
                 Last Matches
             </h2>
-            <div className="ui raised very padded text container segment" style={{height: '75vh'}}>
+            <div className="ui raised very padded text container segment" style={{height: '70vh'}}>
                 <MatchListDiv>
                     <div className="ui list">
                         {renderMatches}

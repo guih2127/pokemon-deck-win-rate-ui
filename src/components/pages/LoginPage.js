@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import ButtonComponent from "../formComponents/ButtonComponent";
 import InputComponent from "../formComponents/InputComponent";
 import UserService from '../../services/UserService';
+import { Redirect } from "react-router-dom";
 
 const LoginDiv = styled.div`
     display: grid;
@@ -15,6 +16,11 @@ const LoginDiv = styled.div`
 const LoginPage = () => {
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
+    const [token, setToken] = useState('');
+
+    useEffect(() => {
+        console.log(token);
+    }, [token]);
 
     const Login = async () => {
         const body = {
@@ -24,8 +30,7 @@ const LoginPage = () => {
 
         await UserService.Login(body)
             .then(response => {
-                localStorage.setItem("token", response.data.token);
-                localStorage.setItem("user", JSON.stringify(response.data.user));
+                setToken(response.data.token);
             })
             .catch(error => {
                 console.log(error);

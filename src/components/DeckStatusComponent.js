@@ -1,7 +1,4 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
-import deckService from "../services/DeckService";
-import LoaderComponent from "./LoaderComponent";
 
 const DeckNameDiv = styled.span`
   white-space: nowrap;
@@ -18,7 +15,7 @@ const DeckStatusComponent = ({ currentDeck, currentDeckStatus }) => {
 
     const renderDeckStatus = () => {
         return (
-            <div className="ui raised very padded text container segment" style={{height: '75vh'}}>
+            <div className="ui raised very padded text container segment" style={{height: '70vh'}}>
                 <DeckStatusDiv>
                     <div className="ui horizontal statistics">
                         <div className="statistic">

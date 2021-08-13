@@ -75,7 +75,7 @@ const DeckDetailsComponent = ({ currentDeck, decks, setCurrentDeck, currentDeckF
                 <i className="file alternate icon"></i>
                 Deck Details
             </h2>
-            <div className="ui raised very padded text container segment" style={{height: '75vh'}}>
+            <div className="ui raised very padded text container segment" style={{height: '70vh'}}>
                 <DeckDetailsDiv>
                     <SelectComponent
                         options={decks}
