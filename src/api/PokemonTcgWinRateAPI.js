@@ -7,4 +7,11 @@ const pokemonTcgWinRateAPI = axios.create({
     }
 });
 
+pokemonTcgWinRateAPI.interceptors.request.use(config => {
+    const token = localStorage.getItem("token");
+    config.headers.authorization = `Bearer ${token}`;
+
+    return config;
+})
+
 export default pokemonTcgWinRateAPI;

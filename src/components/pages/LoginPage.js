@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ButtonComponent from "../formComponents/ButtonComponent";
 import InputComponent from "../formComponents/InputComponent";
 import UserService from '../../services/UserService';
-import { Redirect } from "react-router-dom";
+import { useHistory, withRouter } from "react-router-dom";
 
 const LoginDiv = styled.div`
     display: grid;
@@ -18,8 +18,10 @@ const LoginPage = () => {
     const [password, setPassword] = useState('');
     const [token, setToken] = useState('');
 
+    let history = useHistory();
+
     useEffect(() => {
-        console.log(token);
+
     }, [token]);
 
     const Login = async () => {
@@ -30,7 +32,11 @@ const LoginPage = () => {
 
         await UserService.Login(body)
             .then(response => {
+                localStorage.setItem("token", response.data.token);
+                localStorage.setItem("user", JSON.stringify(response.data.user))
                 setToken(response.data.token);
+                
+                history.push("/DeckStatus");
             })
             .catch(error => {
                 console.log(error);
