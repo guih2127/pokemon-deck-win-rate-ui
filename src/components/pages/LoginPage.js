@@ -14,14 +14,16 @@ const LoginDiv = styled.div`
 `
 
 const LoginPage = () => {
+    let history = useHistory();
+
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [token, setToken] = useState('');
 
-    let history = useHistory();
-
     useEffect(() => {
-
+        if (token || localStorage.getItem("token")) {
+            history.push("/DeckStatus");
+        }
     }, [token]);
 
     const Login = async () => {
@@ -35,8 +37,6 @@ const LoginPage = () => {
                 localStorage.setItem("token", response.data.token);
                 localStorage.setItem("user", JSON.stringify(response.data.user))
                 setToken(response.data.token);
-                
-                history.push("/DeckStatus");
             })
             .catch(error => {
                 console.log(error);

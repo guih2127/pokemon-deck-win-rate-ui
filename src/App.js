@@ -1,9 +1,10 @@
-import { Link, Route, BrowserRouter, Switch } from "react-router-dom";
+import { Link, Route, BrowserRouter, Switch, useHistory } from "react-router-dom";
 import Footer from "./components/FooterComponent";
+import NavBar from "./components/NavBarComponent";
 import DeckStatusPage from "./components/pages/DeckStatusPage"
 import LoginPage from "./components/pages/LoginPage";
 
-function isUserLoggedIn() {
+const isUserLoggedIn = () => {
     if (localStorage.getItem("token")) {
         return true;
     }
@@ -12,20 +13,9 @@ function isUserLoggedIn() {
 };
 
 const App = () => {
+
     return (
         <BrowserRouter>
-            <div>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to="/Login">Login</Link>
-                        </li>
-                        <li>
-                            <Link to="/DeckStatus">Deck Status</Link>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
             <Switch>
                 <Route path="/Login">
                     <Login />
@@ -33,12 +23,15 @@ const App = () => {
                 <Route path="/DeckStatus">
                     <DeckStatus />
                 </Route>
+                <Route path="/">
+                    <Login />
+                </Route>
             </Switch>
         </BrowserRouter>
     );
 };
 
-function Login() {
+const Login = () => {
     return (
         <div>
             <LoginPage />
@@ -47,13 +40,14 @@ function Login() {
     );
 };
 
-function DeckStatus() {
+const DeckStatus = () => {
     if (!isUserLoggedIn()) {
         return Login();
     }
 
     return (
         <div>
+            <NavBar />
             <DeckStatusPage />
             <Footer />
         </div>
