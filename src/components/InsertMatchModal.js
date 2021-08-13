@@ -4,6 +4,7 @@ import SelectComponent from '../components/formComponents/SelectComponent';
 import FirstToPlayOptions from '../options/FirstToPlayOptions';
 import WinOptions from '../options/WinOptions';
 import matchService from '../services/MatchService';
+import moment from 'moment';
 
 const ModalDiv = styled.div`
     position: fixed;
@@ -65,11 +66,14 @@ const InsertMatchModal = ({ show, onClose, currentDeck, decks, setMatches }) => 
     };
 
     const insertMatch = async () => {
+        moment.locale('pt-br');
+
         const body = {
             win: win.value,
             firstTurn: firstToPlay.value,
             usedDeckId: currentPlayedDeck.id,
-            opponentDeckId: currentOpponentDeck.id
+            opponentDeckId: currentOpponentDeck.id,
+            date: moment()
         };
 
         await matchService.insertMatch(body)

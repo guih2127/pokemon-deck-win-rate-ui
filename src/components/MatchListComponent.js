@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-import matchService from '../services/MatchService';
 import InsertMatchModal from "./InsertMatchModal";
+import moment from 'moment';
 
 const MatchListDiv = styled.div`
 `
@@ -30,11 +30,14 @@ const MatchListComponent = ({ currentDeck, decks, matches, setMatches }) => {
     };
 
     const renderMatches = matches.map((match, index) => {
+        let date = moment(match.date).format('DD/MM/YYYY')
         return (
-            <div className="item" key={index}>
+            <div className="item" key={match.id}>
                 {renderIcon(match)}
                 <div className="content">
-                    <a className="header" href="/">Match {index + 1}</a>
+                    <a className="header" href="/">
+                        {date}
+                    </a>
                     <div className="description">
                         <DeckNameSpan>
                             {currentDeck.name}
@@ -57,11 +60,11 @@ const MatchListComponent = ({ currentDeck, decks, matches, setMatches }) => {
                 <i className="gamepad icon"></i>
                 Last Matches
             </h2>
-            <div className="ui raised very padded text container segment" style={{height: '70vh'}}>
+            <div
+                className="ui raised very padded text container segment"
+                style={{ height: '70vh', overflowX: 'scroll' }}
+            >
                 <MatchListDiv>
-                    <div className="ui list">
-                        {renderMatches}
-                    </div>
                     <ButtonInsertMatch>
                         <button
                             className="ui secondary button"
@@ -70,6 +73,9 @@ const MatchListComponent = ({ currentDeck, decks, matches, setMatches }) => {
                             Add Match
                         </button>
                     </ButtonInsertMatch>
+                    <div className="ui list">
+                        {renderMatches}
+                    </div>
                     <InsertMatchModal
                         show={showInsertMatchModal}
                         onClose={() => setShowInsertMatchModal(false)}
