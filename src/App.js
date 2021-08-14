@@ -1,6 +1,7 @@
-import { Link, Route, BrowserRouter, Switch, useHistory } from "react-router-dom";
+import { Route, BrowserRouter, Switch } from "react-router-dom";
 import Footer from "./components/FooterComponent";
 import NavBar from "./components/NavBarComponent";
+import BestDecksPage from "./components/pages/BestDecksPage";
 import DeckStatusPage from "./components/pages/DeckStatusPage"
 import LoginPage from "./components/pages/LoginPage";
 
@@ -15,19 +16,24 @@ const isUserLoggedIn = () => {
 const App = () => {
 
     return (
-        <BrowserRouter>
-            <Switch>
-                <Route path="/Login">
-                    <Login />
-                </Route>
-                <Route path="/DeckStatus">
-                    <DeckStatus />
-                </Route>
-                <Route path="/">
-                    <Login />
-                </Route>
-            </Switch>
-        </BrowserRouter>
+        <div id="app">
+            <BrowserRouter>
+                <Switch>
+                    <Route path="/Login">
+                        <Login />
+                    </Route>
+                    <Route path="/DeckStatus">
+                        <DeckStatus />
+                    </Route>
+                    <Route path="/BestDecks">
+                        <BestDecks />
+                    </Route>
+                    <Route path="/">
+                        <Login />
+                    </Route>
+                </Switch>
+            </BrowserRouter>
+        </div>
     );
 };
 
@@ -53,5 +59,19 @@ const DeckStatus = () => {
         </div>
     );
 };
+
+const BestDecks = () => {
+    if (!isUserLoggedIn()) {
+        return Login();
+    }
+
+    return (
+        <div>
+            <NavBar />
+            <BestDecksPage />
+            <Footer />
+        </div>
+    );
+}
 
 export default App;

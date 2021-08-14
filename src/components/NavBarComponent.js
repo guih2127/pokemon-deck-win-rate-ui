@@ -32,12 +32,15 @@ const NavBar = () => {
 
     return (
         <NavBarDiv>
-                <Link to="/DeckStatus">
-                    <NavBarA>Deck Status</NavBarA>
-                </Link>
-                <NavBarLogoutA onClick={e => Logout()}>
-                    Logout
-                </NavBarLogoutA>
+            <Link to="/DeckStatus">
+                <NavBarA>Deck Status</NavBarA>
+            </Link>
+            <Link to="/BestDecks">
+                <NavBarA>Best Decks</NavBarA>
+            </Link>
+            <NavBarLogoutA onClick={e => Logout()}>
+                Logout
+            </NavBarLogoutA>
         </NavBarDiv>
     );
 };

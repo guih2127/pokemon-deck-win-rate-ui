@@ -30,7 +30,7 @@ const MatchListComponent = ({ currentDeck, decks, matches, setMatches }) => {
     };
 
     const renderMatches = matches.map((match, index) => {
-        let date = moment(match.date).format('DD/MM/YYYY')
+        let date = moment(match.date).format('DD/MMYYYY')
         return (
             <div className="item" key={match.id}>
                 {renderIcon(match)}
