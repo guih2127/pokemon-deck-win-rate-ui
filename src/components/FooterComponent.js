@@ -20,10 +20,6 @@ const IconDiv = styled.div`
 
 const IconA = styled.a`
     color: white;
-
-    /* :hover {
-        color: orange;
-    } */
 `
 
 const Footer = () => {
