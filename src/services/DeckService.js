@@ -8,8 +8,13 @@ const getDeckStatusByDeckId = async (deckId) => {
     return await PokemonTcgWinRateAPI.get(`/decks/${deckId}/status`);
 }
 
-const getBestDecks = async() => {
-    return await PokemonTcgWinRateAPI.get('/decks/best-decks')
+const getBestDecks = async(pageNumber, pageSize) => {
+    return await PokemonTcgWinRateAPI.get('/decks/best-decks', {
+        params: {
+            pageNumber: pageNumber,
+            pageSize: pageSize
+        }
+    })
 }
 
 const deckService = {

@@ -8,7 +8,7 @@ const BestDecksListComponent = ({ bestDecks }) => {
     return (
         <div
             className="ui celled list"
-            style={{ marginLeft: '30%', marginRight: '30%' }}
+            style={{ marginLeft: '30%', marginRight: '30%', padding: '30px' }}
         >
             {renderedDecks}
         </div>

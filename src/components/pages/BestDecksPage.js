@@ -8,7 +8,7 @@ const BestDecksPage = () => {
     const retrieveBestDecks = async() => {
         await deckService.getBestDecks()
             .then(response => {
-                setBestDecks(response.data);
+                setBestDecks(response.data.data);
             })
             .catch(error => {
                 console.log(error);
