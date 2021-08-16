@@ -17,12 +17,12 @@ const PaginationComponent = ({
         return () => {
             renderedButtons();
         };
-    }, [pageNumber, pageSize]);
+    }, [pageNumber, totalPages]);
 
     const renderedPageSizeOptions = PageSizeOptions.map(pageSizeOption => {
         return (
-            <option 
-                key={pageSizeOption} 
+            <option
+                key={pageSizeOption}
                 value={pageSizeOption}
                 defaultValue={pageSizeOption === pageSize}
             >
@@ -73,18 +73,20 @@ const PaginationComponent = ({
         setButtons(buttons);
     }
 
-    const changePageSize = (value) => {
+    const changePageSize = value => {
         setPageSize(value);
-        renderedButtons();
-    }
+    };
 
     return (
         <div style={{ display: 'flex', marginLeft: '31%', marginRight: '48%' }}>
             <div style={{ marginRight: 'auto' }}>
-                <select onChange={(e) => changePageSize(e.target.value)}>
-                    {renderedPageSizeOptions}
-                </select>
-                Número de decks: {totalItens}
+                <span>Número de decks: {totalItens}</span>
+                <div>
+                    <span>Resultados por página: </span>
+                    <select onChange={e => changePageSize(e.target.value)}>
+                        {renderedPageSizeOptions}
+                    </select>
+                </div>
             </div>
             <div>
                 {buttons}
