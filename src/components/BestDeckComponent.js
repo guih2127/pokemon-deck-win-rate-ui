@@ -12,29 +12,15 @@ const BestDeckComponent = ({ deck, index }) => {
         await cardService.getCardById(deck.firstPokemonExternalId)
             .then(response => {
                 setDeckDetails(response.data.data[0]);
-                console.log(deckDetails);
             })
             .catch(error => {
                 console.log(error);
             });
     };
 
-    const renderImage = () => {
-        if (deckDetails) {
-            return (
-                <img
-                    src={deckDetails.images.small}
-                    alt=""
-                    className="ui avatar image"
-                >
-                </img>
-            );
-        }
-    }
-
     return (
         <div className="item" key={deck.id}>
-            {index + 1}
+            {deck.id}
             <div className="content">
                 <div className="header">{deck.name}</div>
                 <div>Wins: {deck.matchesWon}</div>

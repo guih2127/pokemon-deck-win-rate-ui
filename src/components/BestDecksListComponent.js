@@ -1,4 +1,4 @@
-import BestDeckComponent from "./BestDeckComponentComponent";
+import BestDeckComponent from "./BestDeckComponent";
 
 const BestDecksListComponent = ({ bestDecks }) => {
     const renderedDecks = bestDecks.map((deck, index) => {
@@ -8,7 +8,15 @@ const BestDecksListComponent = ({ bestDecks }) => {
     return (
         <div
             className="ui celled list"
-            style={{ marginLeft: '30%', marginRight: '30%', padding: '30px' }}
+            style={{ 
+                marginLeft: '30%', 
+                marginRight: '30%', 
+                padding: '30px', 
+                height: '75vh', 
+                overflowY: 'scroll',
+                overflowX: 'hidden',
+                marginTop: '60px'
+            }}
         >
             {renderedDecks}
         </div>
