@@ -75,10 +75,11 @@ const PaginationComponent = ({
 
     const changePageSize = value => {
         setPageSize(value);
+        setPageNumber(1);
     };
 
     return (
-        <div style={{ display: 'flex', marginLeft: '31%', marginRight: '48%' }}>
+        <div style={{ display: 'flex' }}>
             <div style={{ marginRight: 'auto' }}>
                 <span>Número de decks: {totalItens}</span>
                 <div>

@@ -29,7 +29,15 @@ const BestDecksPage = () => {
     }, [pageNumber, pageSize]);
 
     return (
-        <div>
+        <div 
+            className="ui raised very padded text container segment"
+            style={{
+                overflowY: 'scroll',
+                overflowX: 'hidden',
+                height: '85vh',
+                padding: '2vh'
+            }}
+        >
             <BestDecksListComponent bestDecks={bestDecks} />
             <PaginationComponent
                 pageNumber={pageNumber}
