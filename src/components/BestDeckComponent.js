@@ -1,25 +1,7 @@
-import { useEffect, useState } from "react";
-import cardService from "../services/CardService";
-
-const BestDeckComponent = ({ deck, index }) => {
-    // const [deckDetails, setDeckDetails] = useState(null);
-
-    // useEffect(() => {
-    //     retrieveCardById(deck);
-    // }, []);
-
-    // const retrieveCardById = async (deck) => {
-    //     await cardService.getCardById(deck.firstPokemonExternalId)
-    //         .then(response => {
-    //             setDeckDetails(response.data.data[0]);
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //         });
-    // };
+const BestDeckComponent = ({ deck }) => {
 
     return (
-        <div className="item" key={deck.id}>
+        <div className="item" key={deck.id} style={{cursor: 'pointer'}}>
             {deck.id}
             <div className="content">
                 <div className="header">{deck.name}</div>

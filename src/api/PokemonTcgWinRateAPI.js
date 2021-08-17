@@ -14,4 +14,22 @@ pokemonTcgWinRateAPI.interceptors.request.use(config => {
     return config;
 })
 
+pokemonTcgWinRateAPI.interceptors.response.use(
+    response => responseSuccessHandler(response),
+    error => responseErrorHandler(error)
+);
+
+const responseSuccessHandler = response => {
+    return response;
+};
+
+const responseErrorHandler = error => {
+    if (error.response.status === 401) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+    }
+
+    return Promise.reject(error);
+}
+
 export default pokemonTcgWinRateAPI;

@@ -11,7 +11,7 @@ const DeckNameDiv = styled.span`
 const DeckStatusDiv = styled.div`
 `
 
-const DeckStatusComponent = ({ currentDeck, currentDeckStatus }) => {
+const DeckStatusComponent = ({ currentDeckStatus }) => {
 
     const renderDeckStatus = () => {
         return (
